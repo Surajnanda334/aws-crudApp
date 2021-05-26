@@ -32,7 +32,7 @@ let save = function () {
                 "Gender": req.body.Gender,
                 "Work": req.body.Work
             }
-            let params = {
+            const params = {
                 TableName: "Testing",
                 Item: input
             };
@@ -41,7 +41,7 @@ let save = function () {
                 if (err) {
                     console.log("Testing::save::error - " + JSON.stringify(err, null, 2));                      
                 } else {
-                    console.log("Testing::save::success" );
+                    console.log("Testing::save::success");
                     res.redirect('/')            
                 }
             });
@@ -66,7 +66,12 @@ let fetchOneByKey = function () {
                 }
                 else {
                     console.log("Testing::fetchOneByKey::success " + JSON.stringify(data, null, 2));
-                    res.send(JSON.stringify(data, null, 2));
+                    res.sendFile(__dirname + '/table.html');
+                    // res.send(data.Item.users);
+                    res.send(data.Item.Email,data.Item.users,data.Item.Age);
+                    // res.send(data.Item.Age);
+                    // res.send(data.Item.Gender);
+                    // res.send(data.Item.Work);
                 }
             })
 
