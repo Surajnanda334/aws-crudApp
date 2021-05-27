@@ -28,6 +28,9 @@ app.get('/delete', (req,res)=>{
 app.get('/users', (req,res)=>{
     res.render('table',{users:"Suraj"});
 })
+app.get('/All', (req,res)=>{
+    res.sendFile(__dirname + '/table/htmltable.html');
+})
 let save = function () {
     app.post('/save', async(req,res)=>{
         try{
@@ -71,6 +74,7 @@ let fetchOneByKey = function () {
                     console.log("Testing::fetchOneByKey::error - " + JSON.stringify(err, null, 2));
                 }
                 else {
+                    let DataAll = {};
                     console.log("Testing::fetchOneByKey::success " + JSON.stringify(data, null, 2));
                     res.render('table',{
                         users:{
@@ -89,7 +93,6 @@ let fetchOneByKey = function () {
         }
         
     });
-    
     
 }
 
@@ -116,12 +119,42 @@ let remove = function () {
             
         }
     })
-   
+
+}
+
+let ShowAll = function () {
+    app.post('/All', async(req,res)=>{
+        try{
+            const scanTable = async (TableNameAll = "Testing") => {   
+         
+                const paramsAll = {
+                    TableName: TableNameAll,
+                };
+        
+                const scanResults = [];
+                let items;
+                do{
+                    items =  await docClient.scan(paramsAll).promise();
+                    items.Items.forEach((item) => scanResults.push(item));
+                    paramsAll.ExclusiveStartKey  = items.LastEvaluatedKey;
+                }while(typeof items.LastEvaluatedKey !== "undefined");
+
+                res.redirect('/')
+                //console.log(scanResults[0].users);
+                console.log(scanResults);
+            };
+            scanTable();
+        }catch(err){
+            
+        }
+    })
+
 }
 
 remove();
 fetchOneByKey();
 save();
+ShowAll();
 app.listen(3000,()=>{
     console.log('Listening on http://localhost:3000');
 })
