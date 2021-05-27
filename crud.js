@@ -25,12 +25,6 @@ app.get('/save', (req,res)=>{
 app.get('/delete', (req,res)=>{
     res.render('delete');
 })
-app.get('/users', (req,res)=>{
-    res.render('table',{users:"Suraj"});
-})
-app.get('/All', (req,res)=>{
-    res.sendFile(__dirname + '/table/htmltable.html');
-})
 let save = function () {
     app.post('/save', async(req,res)=>{
         try{
@@ -123,7 +117,7 @@ let remove = function () {
 }
 
 let ShowAll = function () {
-    app.post('/All', async(req,res)=>{
+    app.post('/all', async(req,res)=>{
         try{
             const scanTable = async (TableNameAll = "Testing") => {   
          
@@ -138,10 +132,7 @@ let ShowAll = function () {
                     items.Items.forEach((item) => scanResults.push(item));
                     paramsAll.ExclusiveStartKey  = items.LastEvaluatedKey;
                 }while(typeof items.LastEvaluatedKey !== "undefined");
-
-                res.redirect('/')
-                //console.log(scanResults[0].users);
-                console.log(scanResults);
+                res.render('table',{users:scanResults})
             };
             scanTable();
         }catch(err){

@@ -19,13 +19,6 @@
 	border: 1px solid black;
 	box-shadow: 1px 3px 10px #e0e2e4;
 }
-  #data{
-    font-size: 50px;
-    background-color: rgb(236, 85, 85);
-    max-width: 1024px;
-    margin: auto;
-    margin-top: 100px;
-    }
     table{
       border-spacing: 0px;
       width: 100%;
@@ -34,7 +27,7 @@
       padding: .75em;
       vertical-align: top;
       text-align: center;
-      border-top: 1px solid var(--border);
+      border-top: 1px solid rgb(59, 59, 59);
       }
 </style>
 <body>
@@ -51,9 +44,6 @@
               <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="/delete"><i class="fas fa-user-times"></i> Delete</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/All">All User</a>
-              </li>
             </ul>
             <form action="/read" method="post" class="d-flex">
                 <input class="form-control me-2"  type="text" name="search" value="" placeholder="Enter user's name">
@@ -61,10 +51,10 @@
             </form>
           </div>
         </div>
-      </nav> 
-      <a href="/users" class="btn border-shadow update">
-        <span class="text-gradient"><i class="fas fa-users"></i>All users</span>
-        </a>
+      </nav>
+      <form action="/all" method="post" class="btn">
+          <button style="background-color: rgb(236, 250, 216);" type="submit"><i class="fas fa-users"></i>All users</button>
+      </form>
       
   <script src="./crud.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
