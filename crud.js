@@ -26,7 +26,7 @@ app.get('/delete', (req,res)=>{
     res.render('delete');
 })
 app.get('/users', (req,res)=>{
-    res.render('table',{users:input});
+    res.render('table',{users:"Suraj"});
 })
 app.get('/All', (req,res)=>{
     res.sendFile(__dirname + '/table/htmltable.html');
@@ -76,7 +76,15 @@ let fetchOneByKey = function () {
                 else {
                     let DataAll = {};
                     console.log("Testing::fetchOneByKey::success " + JSON.stringify(data, null, 2));
-                    res.render('table',{users:"suraj"});
+                    res.render('table',{
+                        users:{
+                        Name:data.Item.users,
+                        Email:data.Item.Email,
+                        Age:data.Item.Age,
+                        Gender:data.Item.Gender,
+                        Work:data.Item.Work,
+                        }
+                    });
                 }
             })
 

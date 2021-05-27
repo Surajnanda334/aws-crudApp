@@ -22,7 +22,7 @@ table{
 	vertical-align: top;
 	text-align: center;
 	border-top: 1px blue;
-  margin: .2em;
+  font-size: large;
 }
 </style>
 <body>
@@ -37,15 +37,15 @@ table{
       </tr>
     </thead>
     <tbody id="tbody">
-        <th>suraj</th>
-        <th>surajnanda334@gmail.com</th>
-        <th>21</th>
-        <th>Male</th>
-        <th>Front-end</th>
+      <tr>
+        <th><%= users.Name%></th>
+        <th><%= users.Email%></th>
+        <th><%= users.Age%></th>
+        <th><%= users.Gender%></th>
+        <th><%= users.Work%></th>
+      </tr>  
     </tbody>
   </table>
-  <%= users%>
-  
 </body>
 <script src="./show.js"></script>
 </html>
