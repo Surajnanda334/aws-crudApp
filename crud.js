@@ -1,8 +1,11 @@
 var AWS = require("aws-sdk");
 const express = require('express');
 const bodyParser = require('body-parser');
+const axios = require('axios');
+const { mapLimit } = require("async");
 const app = express();
 
+app.set("view engine", "ejs")
 app.use(bodyParser.urlencoded({ extended : true}))
 
 let awsConfig = {
@@ -14,13 +17,16 @@ AWS.config.update(awsConfig);
 let docClient = new AWS.DynamoDB.DocumentClient();
 
 app.get('/', (req,res)=>{
-    res.sendFile(__dirname + '/home.html');
+    res.render('home');
 })
 app.get('/save', (req,res)=>{
-    res.sendFile(__dirname + '/form.html');
+    res.render('form');
 })
 app.get('/delete', (req,res)=>{
-    res.sendFile(__dirname + '/delete.html');
+    res.render('delete');
+})
+app.get('/users', (req,res)=>{
+    res.render('table',{users:input});
 })
 app.get('/All', (req,res)=>{
     res.sendFile(__dirname + '/table/htmltable.html');
@@ -70,15 +76,7 @@ let fetchOneByKey = function () {
                 else {
                     let DataAll = {};
                     console.log("Testing::fetchOneByKey::success " + JSON.stringify(data, null, 2));
-                    res.sendFile(__dirname + '/table.html');
-                    DataAll = {
-                        Name: data.Item.users,
-                        Email: data.Item.Email,
-                        Age: data.Item.Age,
-                        Gender: data.Item.Gender,
-                        Work: data.Item.Work
-                    }
-                    res.send(DataAll);
+                    res.render('table',{users:"suraj"});
                 }
             })
 
