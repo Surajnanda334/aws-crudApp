@@ -13,12 +13,16 @@
 table{
 	border-spacing: 0px;
 	width: 100%;
+}thead{
+  background-color: rgb(33, 36, 82);
+  color: aliceblue;
 }
 .table td, .table th{
 	padding: .75em;
 	vertical-align: top;
 	text-align: center;
-	border-top: 1px solid var(--border);
+	border-top: 1px blue;
+  margin: .2em;
 }
 </style>
 <body>
@@ -33,9 +37,15 @@ table{
       </tr>
     </thead>
     <tbody id="tbody">
-
+        <th>suraj</th>
+        <th>surajnanda334@gmail.com</th>
+        <th>21</th>
+        <th>Male</th>
+        <th>Front-end</th>
     </tbody>
   </table>
+  <%= users%>
+  
 </body>
-<script src="./crud.js"></script>
+<script src="./show.js"></script>
 </html>
