@@ -70,9 +70,9 @@ let fetchOneByKey = function () {
                 else {
                     let DataAll = {};
                     console.log("Testing::fetchOneByKey::success " + JSON.stringify(data, null, 2));
-                    res.render('table',{
-                        users:{
-                        Name:data.Item.users,
+                    res.render('searchTable',{
+                        specificUser:{
+                        users:data.Item.users,
                         Email:data.Item.Email,
                         Age:data.Item.Age,
                         Gender:data.Item.Gender,

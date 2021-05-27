@@ -64,15 +64,14 @@ table{
         <th>Work</th>
       </tr>
     </thead>
-    <% for(var i = 0;i < users.length;i++){%>
       <tr>
-          <td><%= users[i].users%></td>
-          <td><%= users[i].Email%></td>
-          <td><%= users[i].Age%></td>
-          <th><%= users[i].Gender%></td>
-          <td><%= users[i].Work%></td>
+          <td><%= specificUser.users%></td>
+          <td><%= specificUser.Email%></td>
+          <td><%= specificUser.Age%></td>
+          <th><%= specificUser.Gender%></td>
+          <td><%= specificUser.Work%></td>
       </tr> 
-      <%}%>
+     
   </table>
 </body>
 <script src="./crud.js"></script>
